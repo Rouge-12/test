@@ -18,14 +18,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $city = $_POST['city'];
                 $telephone = $_POST['telephone'];
                 $birthdate = $_POST['birthdate'];
-                $query2 = "INSERT INTO userInfo VALUES('$username', '$fname', '$sname', '$city', '$telephone', '$birthdate')";
+                $query2 = "INSERT INTO userInfo VALUES('$username', '$fname', '$sname', '$city', '$telephone', '$birthdate', NULL)";
                 $result2 = $connection->query($query2);
                 
                 if($result2) {
-                $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
-                $filename = $_POST['username'];
-                move_uploaded_file($_FILES['img']['tmp_name'], 
-                        "profile_images\\". "$username.$extension");
+                $extension = profile_img($username, "profile_images");
+                $query3 = "UPDATE userInfo SET profile_image='$username.$extension' WHERE username='$username'";
+                $result3 = $connection->query($query3);
+                if(!$result3) {
+                    echo "Ошибка при добавлении пути в БД";
+                }
                 $_SESSION['username'] = $_POST['username'];
                 header("location:profile.php");
                 } else {

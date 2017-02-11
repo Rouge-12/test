@@ -98,7 +98,9 @@
             </div>
         </div>
         <div class="form login">
-            <header></header>
+            <header>
+                <span>Вход</span>
+            </header>
             <form action="authorization/login.php" method="post">
                 <input name="username" type="text" required="required"
                       placeholder="Введите логин">
@@ -109,8 +111,9 @@
             </form>
         </div>
         <div class="form registration">
-            <header></header>
-            <!--TODO: оформить аплоад изображения!-->
+            <header>
+                <span>Регистрация</span>
+            </header>
             <form action="authorization/registration.php" method="post" enctype="multipart/form-data">
                 <input type="text" name="username" placeholder="Логин">
                 <input type="password" name="password" placeholder="Пароль">
@@ -119,7 +122,10 @@
                 <input type="text" name="city" placeholder="Город">
                 <input type="text" name="telephone" placeholder="Телефон">
                 <input type="text" name="birthdate" placeholder="День рождения">
-                <input type="file" name="img">
+                
+                <label for="inp-file">Загрузить изображение</label>
+                <input id="inp-file" type="file" accept="image/*" name="img">
+                
                 <input type="submit" value="Зарегистрироваться">
             </form>
         </div>

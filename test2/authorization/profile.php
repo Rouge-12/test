@@ -15,6 +15,7 @@ if(isset($_SESSION['username']) || isset($_COOKIE['username'])) {
         $city = $row['city'];
         $phone = $row['telephone'];
         $birthdate = $row['birthdate'];
+        $image = $row['profile_image'];
     } else {
         $name = "ERROR";
     }
@@ -39,8 +40,8 @@ if(isset($_SESSION['username']) || isset($_COOKIE['username'])) {
         <section class="main">
             <div class="prof">
                 <div class="prof-pic">
-                    <?php echo "<img width='250' height='300' src='profile_images/$username.jpg' alt=''>";?>
-                    <a href="#">Редактировать</a>
+                    <?php echo "<img width='250' height='300' src='profile_images/$image' alt=''>";?>
+                    <a href="profile_settings/settings.php">Редактировать</a>
                 </div>
                 <div class="prof-info">
                     <h2><?php echo "$fname $sname";?></h2>

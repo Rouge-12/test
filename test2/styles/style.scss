@@ -24,6 +24,12 @@ header {
         background-color: #7B8983;
         transition: all .25s;
     }
+    
+    span {
+        display: block;
+        text-align: center;
+        padding-top: 11px;
+    }
 }
 
 .main {
@@ -149,7 +155,7 @@ div.footer {
 .login { 
     input[type='submit'] {
         display: inline-block;
-        margin: 0 0 20px 12.5%;
+        margin: 0 0 20px 12%;
         padding: 10px 20px;
         color: black;
         background-color: #A2B0AA;
@@ -164,22 +170,35 @@ div.footer {
 }
 
 
-.registration {   
+.registration {
     input[type='submit'] {
-        display: block;
-        margin: 0 0 20px 12.5%;
+        display: inline-block;
+        margin: 0 0 20px 12%;
         padding: 10px 20px;
         color: black;
         background-color: #A2B0AA;
         border: none;
         outline: none;
     }
+    
+    #inp-file {
+        display: none;
+    }
+    label[for="inp-file"] {
+        display: inline-block;
+        padding: 10px 20px;
+        color: black;
+        background-color: #A2B0AA;
+        border: none;
+        margin: 0 0 20px 12%;
+        font-size: 14px;
+    }
 }
 
 .form {
     display: none;
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 40%;
     width: 20%;
     border: 2px solid $bord-color;
@@ -201,5 +220,33 @@ input[type="password"] {
     &:focus {
         outline: none;
         border-top: 3px solid #A2B0AA;
+    }
+}
+
+.settings {
+    width: 600px;
+    margin: 10px auto;
+    #inp-file {
+        display: none;
+    }
+
+    label[for="inp-file"] {
+        display: inline-block;
+        padding: 10px 20px;
+        width: 200px;
+        margin-left: 13%;
+        color: black;
+        background-color: #A2B0AA;
+        border: none;
+        font-size: 14px;
+    }
+
+    input[type='submit'] {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-left: 94px;
+            color: black;
+            background-color: #A2B0AA;
+            border: none;
     }
 }
