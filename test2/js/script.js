@@ -1,17 +1,30 @@
-
 $(document).ready( function() {
     
-    $('#log').click( function() {
-        $('.login').toggle();
-        if($('.registration').css('display') === 'block') {
-            $('.registration').hide();
-        }
-    });//конец click
+    $('#pic-upload').change( function() {
+        this.form.submit();
+    }); // конец change
+        
+    $('#inp-file').change( function(){
+        $('#lab').text('Загружено!');
+    }); // конец change
     
-    $('#reg').click( function() {
-        $('.registration').toggle();
-        if($('.login').css('display') === 'block') {
-            $('.login').hide();
+    $('#blur').click(function() {
+        if($('#login').css('display') === 'block') {
+            $('#login').hide();
+        } else {
+            $('#registration').hide();
         }
-    });//конец click
+        $('#blur').hide();
+    }); // конец click
+    
+    $('#log').click(function() {
+        console.log('login click event');
+        $('#blur').show();
+        $('#login').show();
+    }); // конец click
+    
+    $('#reg').click(function() {
+        $('#blur').show();
+        $('#registration').show();
+    }); // конец click
 }); // конец ready

@@ -5,6 +5,11 @@
         header("location: authorization/profile.php");
     }
 ?>
+<!--    TODO:
+    Сделать сценарии входа и регистрации по-человечески
+    поработать над структурой scss и добавить семантики в html
+    ХВАТИТ ЮЗАТЬ ДИВЫ
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -97,7 +102,8 @@
                 </div>
             </div>
         </div>
-        <div class="form login">
+        <div id="blur"></div>
+        <div id="login">
             <header>
                 <span>Вход</span>
             </header>
@@ -110,7 +116,7 @@
                 <label id="flag"><input type="checkbox" name="remember">Запомнить?</label>
             </form>
         </div>
-        <div class="form registration">
+        <div id="registration">
             <header>
                 <span>Регистрация</span>
             </header>
@@ -122,10 +128,10 @@
                 <input type="text" name="city" placeholder="Город">
                 <input type="text" name="telephone" placeholder="Телефон">
                 <input type="text" name="birthdate" placeholder="День рождения">
-                
-                <label for="inp-file">Загрузить изображение</label>
+
+                <label id="lab" for="inp-file">Загрузить изображение</label><br>
                 <input id="inp-file" type="file" accept="image/*" name="img">
-                
+
                 <input type="submit" value="Зарегистрироваться">
             </form>
         </div>

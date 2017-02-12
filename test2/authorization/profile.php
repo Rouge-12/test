@@ -6,6 +6,15 @@ if(isset($_SESSION['username']) || isset($_COOKIE['username'])) {
     isset($_SESSION['username']) ? $username = $_SESSION['username'] :
         $username = $_COOKIE['username'];
     
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+        $extension = profile_img($username, "profile_images");
+        $query = "UPDATE userInfo SET profile_image='$username.$extension' WHERE username='$username'";
+        $result = $connection->query($query);
+        if(!$result) {
+            echo "Ошибка!";
+        }
+    } 
+    
     $query = "SELECT * FROM userInfo WHERE username='$username'";
     $result = $connection->query($query);
     if($result) {
@@ -20,8 +29,10 @@ if(isset($_SESSION['username']) || isset($_COOKIE['username'])) {
         $name = "ERROR";
     }
 ?>
-<!--TODO: сделать странички для музыки, фоток и редактирования
-    не забыть про textarea, красиво оформить .prof-info-->
+<!--    TODO: 
+    сделать странички для музыки, фоток и пофиксить редактирование
+    не забыть про textarea, красиво оформить .prof-info
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,6 +41,8 @@ if(isset($_SESSION['username']) || isset($_COOKIE['username'])) {
         <link rel="stylesheet" href="../styles/style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="../js/script.js"></script>
     </head>
     <body>
         <header>
@@ -41,13 +54,16 @@ if(isset($_SESSION['username']) || isset($_COOKIE['username'])) {
             <div class="prof">
                 <div class="prof-pic">
                     <?php echo "<img width='250' height='300' src='profile_images/$image' alt=''>";?>
-                    <a href="profile_settings/settings.php">Редактировать</a>
+                    <form action="profile.php" method="POST" enctype="multipart/form-data">
+                        <label for="pic-upload">Изменить</label>
+                        <input name="img" type="file" id="pic-upload">
+                    </form>
                 </div>
                 <div class="prof-info">
                     <h2><?php echo "$fname $sname";?></h2>
                     <ul>
                         <?php echo <<<_END
-                        <li>День рождения:  $birthdate </li>
+                        <li>День рождения:  $birthdate</li>
                         <li>Город:          $city</li>
                         <li>Телефон:        $phone</li>
 _END;
